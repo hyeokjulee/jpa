@@ -1,0 +1,13 @@
+spring:
+  application:
+    name: hellojpa
+  jpa:
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+#    defer-datasource-initialization: true
+  h2:
+    console:
+      enabled: true
+  datasource:
+    url: jdbc:h2:mem:testdb
