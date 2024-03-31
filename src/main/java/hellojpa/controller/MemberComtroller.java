@@ -1,6 +1,7 @@
 package hellojpa.controller;
 
 import hellojpa.entity.Member;
+import hellojpa.entity.MemberType;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -23,8 +24,8 @@ public class MemberComtroller {
 
         try {
             Member member = new Member();
-            member.setId(100L);
             member.setName("안녕하세요");
+            member.setMemberType(MemberType.USER);
 
             em.persist(member);
             tx.commit();

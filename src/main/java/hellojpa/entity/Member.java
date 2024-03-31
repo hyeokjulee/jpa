@@ -1,14 +1,22 @@
 package hellojpa.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class Member {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.TABLE)
     private Long id;
+
+    @Column(name = "USERNAME", nullable = false, length = 20)
     private String name;
+
+    @Column(nullable = true)
+    private int age;
+
+    @Enumerated(EnumType.STRING)
+    private MemberType memberType;
 
     public Long getId() {
         return id;
@@ -24,5 +32,21 @@ public class Member {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public MemberType getMemberType() {
+        return memberType;
+    }
+
+    public void setMemberType(MemberType memberType) {
+        this.memberType = memberType;
     }
 }
