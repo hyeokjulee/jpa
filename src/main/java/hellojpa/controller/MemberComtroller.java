@@ -2,6 +2,7 @@ package hellojpa.controller;
 
 import hellojpa.entity.Member;
 import hellojpa.entity.MemberType;
+import hellojpa.entity.Team;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
 import jakarta.persistence.EntityTransaction;
@@ -23,11 +24,15 @@ public class MemberComtroller {
         tx.begin();
 
         try {
-            Member member = new Member();
-            member.setName("안녕하세요");
-            member.setMemberType(MemberType.USER);
+            Team team = new Team();
+            team.setName("teamA");
+            em.persist(team);
 
+            Member member = new Member();
+            member.setName("member1");
+            member.setTeamId(team.getId());
             em.persist(member);
+
             tx.commit();
         } catch (Exception e) {
             tx.rollback();

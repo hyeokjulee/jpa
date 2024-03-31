@@ -6,17 +6,16 @@ import jakarta.persistence.*;
 public class Member {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.TABLE)
+    @GeneratedValue
     private Long id;
 
-    @Column(name = "USERNAME", nullable = false, length = 20)
+    @Column(name = "USERNAME")
     private String name;
 
-    @Column(nullable = true)
     private int age;
 
-    @Enumerated(EnumType.STRING)
-    private MemberType memberType;
+    @Column(name = "TEAM_ID")
+    private Long TeamId;
 
     public Long getId() {
         return id;
@@ -42,11 +41,11 @@ public class Member {
         this.age = age;
     }
 
-    public MemberType getMemberType() {
-        return memberType;
+    public Long getTeamId() {
+        return TeamId;
     }
 
-    public void setMemberType(MemberType memberType) {
-        this.memberType = memberType;
+    public void setTeamId(Long teamId) {
+        TeamId = teamId;
     }
 }
