@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/member")
 public class MemberComtroller {
@@ -36,6 +38,11 @@ public class MemberComtroller {
             Team findTeam = findMember.getTeam();
 
             findTeam.getName();
+
+            List<Member> members = findTeam.getMembers();
+            for (Member member1 : members) {
+                System.out.println("member1 = " + member1);
+            }
 
             tx.commit();
         } catch (Exception e) {
