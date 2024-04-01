@@ -28,21 +28,24 @@ public class MemberComtroller {
 
             Member member = new Member();
             member.setName("hello");
+
+            team.getMembers().add(member);
             member.setTeam(team);
+
             em.persist(member);
 
             em.flush();
             em.clear();
 
-            Member findMember = em.find(Member.class, member.getId());
-            Team findTeam = findMember.getTeam();
-
-            findTeam.getName();
-
-            List<Member> members = findTeam.getMembers();
-            for (Member member1 : members) {
-                System.out.println("member1 = " + member1);
-            }
+//            Member findMember = em.find(Member.class, member.getId());
+//            Team findTeam = findMember.getTeam();
+//
+//            findTeam.getName();
+//
+//            List<Member> members = findTeam.getMembers();
+//            for (Member member1 : members) {
+//                System.out.println("member1 = " + member1);
+//            }
 
             tx.commit();
         } catch (Exception e) {
