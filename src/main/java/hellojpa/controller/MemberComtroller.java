@@ -34,10 +34,17 @@ public class MemberComtroller {
 
             em.persist(member);
 
-            em.flush();
-            em.clear();
+            //검색
+            String jpql = "select m from Member m join fetch m.team where m.name like '%hello%'";
+            List<Member> resultList = em.createQuery(jpql, Member.class)
+                    .setFirstResult(10)
+                    .setMaxResults(20)
+                    .getResultList();
 
+            //조회
             Member findMember = em.find(Member.class, member.getId());
+
+            //수정
             findMember.setName("t아카데미");
 
             tx.commit();
