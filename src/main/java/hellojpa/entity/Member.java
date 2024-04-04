@@ -18,6 +18,14 @@ public class Member {
     @JoinColumn(name = "TEAM_ID")
     private Team team;
 
+    public Member() {
+    }
+
+    public Member(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
     public Long getId() {
         return id;
     }
